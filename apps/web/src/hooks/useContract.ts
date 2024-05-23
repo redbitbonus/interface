@@ -139,7 +139,7 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 
 export function useV2RouterContract(): Contract | null {
   const { chainId } = useWeb3React()
-  const address = chainId ? chainId === ChainId.SEPOLIA ? '0xab5Fd7c5da6d62199ad7010F647B70b55Adf6A45' : V2_ROUTER_ADDRESSES[chainId] : undefined
+  const address = chainId ? chainId === ChainId.SEPOLIA ? '0xc76c8150d36e2492e5ec0c6934bf63948fa0bd5a' : V2_ROUTER_ADDRESSES[chainId] : undefined
   return useContract(address, IUniswapV2Router02ABI, true)
 }
 

@@ -186,7 +186,7 @@ export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
 
   return new Token(
     tokenA.chainId,
-    computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId] || '0x1b5747700246930599eabd93395bda21121cb2c2', tokenA, tokenB }),
+    computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId] || '0x2871383af6a874b48056534f664a64447729648d', tokenA, tokenB }),
     18,
     'UNI-V2',
     'Uniswap V2'
