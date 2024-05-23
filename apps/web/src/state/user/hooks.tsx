@@ -1,4 +1,4 @@
-import { Percent, Token, V2_FACTORY_ADDRESSES } from '@uniswap/sdk-core'
+import { ChainId, Percent, Token, V2_FACTORY_ADDRESSES } from '@uniswap/sdk-core'
 import { Pair, computePairAddress } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { L2_CHAIN_IDS, chainIdToBackendChain, useSupportedChainId } from 'constants/chains'
@@ -182,11 +182,11 @@ export function usePairAdder(): (pair: Pair) => void {
 export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
   if (tokenA.chainId !== tokenB.chainId) throw new Error('Not matching chain IDs')
   if (tokenA.equals(tokenB)) throw new Error('Tokens cannot be equal')
-  if (!V2_FACTORY_ADDRESSES[tokenA.chainId]) throw new Error('No V2 factory address on this chain')
+  if (!V2_FACTORY_ADDRESSES[tokenA.chainId] && tokenA.chainId !== ChainId.SEPOLIA) throw new Error('No V2 factory address on this chain')
 
   return new Token(
     tokenA.chainId,
-    computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId], tokenA, tokenB }),
+    computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId] || '0x1b5747700246930599eabd93395bda21121cb2c2', tokenA, tokenB }),
     18,
     'UNI-V2',
     'Uniswap V2'

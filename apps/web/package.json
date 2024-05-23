@@ -5,6 +5,7 @@
   "license": "GPL-3.0-or-later",
   "scripts": {
     "ajv": "node scripts/compile-ajv-validators.js",
+    "build": "yarn craco build",
     "check:deps:usage": "depcheck",
     "check:circular": "concurrently \"../../scripts/check-circular-imports.sh ./src/pages/App.tsx 7\" \"../../scripts/check-circular-imports.sh ./src/setupTests.ts 0\"",
     "graphql:schema": "node scripts/fetch-schema.js",

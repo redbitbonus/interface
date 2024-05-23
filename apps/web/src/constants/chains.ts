@@ -845,7 +845,9 @@ export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number]
  * @deprecated when v2 pools are enabled on chains supported through sdk-core
  */
 export const SUPPORTED_V2POOL_CHAIN_IDS_DEPRECATED = [ChainId.MAINNET, ChainId.GOERLI] as const
-export const SUPPORTED_V2POOL_CHAIN_IDS = Object.keys(V2_ROUTER_ADDRESSES).map((chainId) => parseInt(chainId))
+export const SUPPORTED_V2POOL_CHAIN_IDS = Object.keys(V2_ROUTER_ADDRESSES).map((chainId) => parseInt(chainId)).concat(
+  ChainId.SEPOLIA
+)
 
 export const BACKEND_SUPPORTED_CHAINS = Object.keys(CHAIN_INFO)
   .filter((key) => {

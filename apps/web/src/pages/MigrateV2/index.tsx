@@ -1,6 +1,6 @@
 import { getCreate2Address } from '@ethersproject/address'
 import { keccak256, pack } from '@ethersproject/solidity'
-import { Token, V2_FACTORY_ADDRESSES } from '@uniswap/sdk-core'
+import { ChainId, Token, V2_FACTORY_ADDRESSES } from '@uniswap/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import MigrateSushiPositionCard from 'components/PositionCard/Sushi'
@@ -59,7 +59,7 @@ export default function MigrateV2() {
   const theme = useTheme()
   const { account, chainId } = useWeb3React()
 
-  const v2FactoryAddress = chainId ? V2_FACTORY_ADDRESSES[chainId] : undefined
+  const v2FactoryAddress = chainId ? chainId === ChainId.SEPOLIA ? '0x1b5747700246930599eabd93395bda21121cb2c2' : V2_FACTORY_ADDRESSES[chainId] : undefined
 
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()
