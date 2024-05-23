@@ -128,7 +128,7 @@ function V2PairMigration({
 }) {
   const { chainId, account } = useWeb3React()
   const theme = useTheme()
-  const v2FactoryAddress = chainId ? chainId === ChainId.SEPOLIA ? '0x2871383af6a874b48056534f664a64447729648d' : V2_FACTORY_ADDRESSES[chainId] : undefined
+  const v2FactoryAddress = chainId ? chainId === ChainId.SEPOLIA ? '0x0876021e4596a761f880c61634984727cc209961' : V2_FACTORY_ADDRESSES[chainId] : undefined
   const trace = useTrace()
 
   const pairFactory = useSingleCallResult(pair, 'factory')
